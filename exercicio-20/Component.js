@@ -1,7 +1,10 @@
-class Component {
-  #refElement
+export class Component {
+  #refElement = null
 
-  constructor(){
+  constructor(tag, parent, options){
+    this.tag = tag
+    this.parent = parent
+    this.options = options
     this.build()
   }
 
@@ -14,7 +17,9 @@ class Component {
   }
 
   build() {
-    this.#refElement = document.createElement('div')
+    this.#refElement = document.createElement(this.tag)
+    Object.assign(this.#refElement, this.options)
+    return this
   }
 
   render() {
