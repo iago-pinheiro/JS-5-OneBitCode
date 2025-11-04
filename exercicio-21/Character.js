@@ -7,7 +7,14 @@ class Character {
   }
 
   atacar(alvo) {
-    alvo = new Character
-    alvo.ptsVida -= this.Character.ataque - Character.defesa
+    const dano = this.ataque - alvo.defesa
+    if (dano > 0) {
+      alvo.ptsVida -= dano
+      console.log(`${this.nome} atacou ${alvo.nome} e causou ${dano} de dano!`)
+    } else {
+      console.log(`${this.nome} atacou ${alvo.nome} mas não causou dano!`)
+    }
   }
 }
+
+module.exports = Character
